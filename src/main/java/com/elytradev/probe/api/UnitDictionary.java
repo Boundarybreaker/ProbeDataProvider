@@ -11,7 +11,7 @@ import com.elytradev.probe.api.impl.TicksUnit;
 import com.elytradev.probe.api.impl.Unit;
 import com.google.common.collect.HashBiMap;
 
-import net.minecraftforge.fluids.Fluid;
+import net.minecraft.fluid.Fluid;
 
 /**
  * A central place for unit registrations. It's highly recommended to register your unit on both the client *and* the
@@ -36,6 +36,8 @@ public class UnitDictionary {
 	public static final Unit FU_PER_TICK       = new SIUnit("fu_per_tick",      "FU/t",0xD50000); //Also A700 red
 	public static final Unit DANKS             = new SIUnit("danks",            "Dk",  0x512DA8); //700 deep purple (from Tesla capabilities)
 	public static final Unit DANKS_PER_TICK    = new SIUnit("danks_per_tick",   "Dk/t",0x512DA8); //Also 700 deep purple
+	public static final Unit ZERO_POINT		   = new SIUnit("zero_point",       "ZP",  0x005a5a); //ZPE blue
+	public static final Unit ZP_PER_SECOND	   = new SIUnit("zp_per_second",	  "ZP/s",0x005a5a); //Also ZPE blue
 	
 	//Temperature for ITemperature
 	public static final Unit KELVIN            = new SIUnit("kelvin",           "°K",  0xFF0000); //Programmer Red

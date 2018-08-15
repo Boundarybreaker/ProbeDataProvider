@@ -1,0 +1,11 @@
+{
+  "id": "probedataprovider",
+  "name": "ProbeDataProvider",
+  "authors": [
+    "unascribed",
+    "falkreon"
+  ],
+  "listeners": [
+    "com.elytradev.probe.ProbeDataProviderPlugin"
+  ]
+}

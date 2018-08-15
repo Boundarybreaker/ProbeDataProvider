@@ -3,8 +3,10 @@ buildscript {
 		mavenCentral()
 		jcenter()
 		maven {
-			name = "forge"
-			url = "http://files.minecraftforge.net/maven"
+			url 'https://www.dimdev.org/maven/'
+		}
+		maven {
+			url 'https://www.dimdev.org/maven/'
 		}
 		maven {
 			name = "sonatype"
@@ -17,24 +19,21 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle.tweaker-client'
 apply plugin: 'maven'
 
 group = "com.elytradev"
 archivesBaseName = "ProbeDataProviderAPI"
-version = "MC1.12_ver1.1.1"
+version = "MC1.13_ver1.0"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 minecraft {
-	version = "1.12-14.21.0.2344"
-	mappings = "snapshot_20170617"
-
-	runDir = "minecraft"
-
-	replaceIn 'src/main/java/com/elytradev/dataprovider/ProbeDataProviderPlugin.java'
-	replace '@VERSION@', project.version
+	version = '1.13'
+	mappings = 'snapshot_5'
+	runDir = 'run'
+	tweakClass = 'org.dimdev.riftloader.launch.RiftLoaderTweaker'
 }
 
 processResources {
@@ -59,6 +58,7 @@ processResources {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://www.dimdev.org/maven/' }
 }
 
 configurations {
@@ -67,27 +67,5 @@ configurations {
 
 dependencies {
 	deploy 'org.apache.maven.wagon:wagon-ssh:2.10'
-}
-
-ext.priv = parseConfig(file('private.properties'))
-
-def parseConfig(File config) {
-	if (!config.exists()) return null
-	config.withReader {
-		def prop = new Properties()
-		prop.load(it)
-		return (new ConfigSlurper().parse(prop))
-	}
-}
-
-if (ext.priv != null) {
-	uploadArchives {
-		repositories.mavenDeployer {
-			configuration = configurations.deploy
-			pom.artifactId = 'probedataproviderapi'
-			repository(url: "sftp://"+priv.sftpHost+priv.sftpPath) {
-				authentication(userName: priv.sftpUser, privateKey: file(priv.sftpKey))
-			}
-		}
-	}
+	implementation 'org.dimdev:rift:1.0.3-45:dev'
 }
