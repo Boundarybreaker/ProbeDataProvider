@@ -222,7 +222,7 @@ public class ProbeData implements IProbeData {
 		int result = 1;
 		result = prime * result + is.getItem().hashCode();
 		result = prime * result + is.getCount();
-		result = prime * result + is.getMetadata();
+		result = prime * result + is.getItemDamage();
 		result = prime * result + (is.hasTagCompound() ? is.getTagCompound().hashCode() : 0);
 		return result;
 	}
