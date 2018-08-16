@@ -6,15 +6,12 @@ buildscript {
 			url 'https://www.dimdev.org/maven/'
 		}
 		maven {
-			url 'https://www.dimdev.org/maven/'
-		}
-		maven {
 			name = "sonatype"
 			url = "https://oss.sonatype.org/content/repositories/snapshots/"
 		}
 	}
 	dependencies {
-		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+		classpath 'org.dimdev:ForgeGradle:2.3-SNAPSHOT'
 	}
 }
 
@@ -24,7 +21,7 @@ apply plugin: 'maven'
 
 group = "com.elytradev"
 archivesBaseName = "ProbeDataProviderAPI"
-version = "MC1.13_ver1.0"
+version = "1.0"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

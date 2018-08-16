@@ -1,6 +1,7 @@
 {
   "id": "probedataprovider",
   "name": "ProbeDataProvider",
+  "version": "1.0",
   "authors": [
     "unascribed",
     "falkreon"

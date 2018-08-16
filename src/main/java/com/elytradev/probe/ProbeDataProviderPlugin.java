@@ -5,7 +5,6 @@ import net.minecraft.fluid.Fluid;
 import com.elytradev.probe.api.UnitDictionary;
 import com.elytradev.probe.api.impl.SIUnit;
 import com.elytradev.probe.api.impl.Unit;
-import org.dimdev.rift.injectedmethods.RiftFluid;
 import org.dimdev.rift.listener.MinecraftStartListener;
 
 public class ProbeDataProviderPlugin implements MinecraftStartListener {
