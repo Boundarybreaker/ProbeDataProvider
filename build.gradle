@@ -33,26 +33,6 @@ minecraft {
 	tweakClass = 'org.dimdev.riftloader.launch.RiftLoaderTweaker'
 }
 
-processResources {
-	// this will ensure that this task is redone when the versions change.
-	inputs.property "version", project.version
-	inputs.property "mcversion", project.minecraft.version
-
-	// replace stuff in mcmod.info, nothing else
-	from(sourceSets.main.resources.srcDirs) {
-		include 'mcmod.info'
-
-		// replace version and mcversion
-		expand 'version':project.version, 'mcversion':project.minecraft.version
-	}
-
-	// copy everything else, thats not the mcmod.info
-	from(sourceSets.main.resources.srcDirs) {
-		exclude 'mcmod.info'
-		exclude '*.xcf' //Always exclude gimp source files.
-	}
-}
-
 repositories {
 	mavenCentral()
 	maven { url 'https://www.dimdev.org/maven/' }
@@ -65,4 +45,19 @@ configurations {
 dependencies {
 	deploy 'org.apache.maven.wagon:wagon-ssh:2.10'
 	implementation 'org.dimdev:rift:1.0.3-45:dev'
+}
+
+sourceSets {
+	api {
+		resources {
+
+		}
+	}
+}
+
+jar {
+	from "LICENSE"
+	from sourceSets.main.output
+	from sourceSets.main.allJava
+	classifier '' //this is the main jar!
 }
